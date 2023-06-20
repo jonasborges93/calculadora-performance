@@ -11,6 +11,10 @@ let numeroDeProspect_1 = document.getElementById('numero-prospects-1');
 let numeroDeProspect_2 = document.getElementById('numero-prospects-2');
 let numeroDeProspect_3 = document.getElementById('numero-prospects-3');
 
+let numeroDeCliente_1 = document.getElementById('numero-clientes-1');
+let numeroDeCliente_2 = document.getElementById('numero-clientes-2');
+let numeroDeCliente_3 = document.getElementById('numero-clientes-3');
+
 //CALCULANDO CUSTO POR LEAD
 function calcularCustoPorLead1(){
   let valor1 = valorIvestido_1.value || 0;
@@ -133,33 +137,119 @@ function calcularTaxaDeConversãoProspect3(){
   document.getElementById('taxa-de-conversao-prospect-3').value = tcp.toFixed(2) + '%';
 }
 
+//CALCULANDO TAXA DE AQUISIÇÃO DE CLIENTES(CAC)
+function calcularTaxaDeAquisicaoDeClientes1(){
+  nClientes1 = numeroDeCliente_1.value || 0;
+  valor1 = valorIvestido_1.value || 0;
+
+  if(nClientes1 === 0 || valor1 === 0){
+    cac = 0;
+  } else{
+    cac = parseFloat(valor1 / nClientes1);
+  }
+
+  document.getElementById('cac-1').value = cac.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
+}
+
+function calcularTaxaDeAquisicaoDeClientes2(){
+  nClientes2 = numeroDeCliente_2.value || 0;
+  valor2 = valorIvestido_2.value || 0;
+
+  if(nClientes2 === 0 || valor2 === 0){
+    cac = 0;
+  } else{
+    cac = parseFloat(valor2 / nClientes2);
+  }
+
+  document.getElementById('cac-2').value = cac.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
+}
+
+function calcularTaxaDeAquisicaoDeClientes3(){
+  nClientes3 = numeroDeCliente_3.value || 0;
+  valor3 = valorIvestido_3.value || 0;
+
+  if(nClientes3 === 0 || valor3 === 0){
+    cac = 0;
+  } else{
+    cac = parseFloat(valor3 / nClientes3);
+  }
+
+  document.getElementById('cac-3').value = cac.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
+}
+
+//CALCULANDO TAXA DE CONVERSÃO DE VENDAS(TCV)
+function calcularTaxaDeConversaoDeVendas1(){
+  nClientes1 = numeroDeCliente_1.value || 0;
+  nProspect1 = numeroDeProspect_1.value || 0;
+
+  if(nClientes1 === 0 || nProspect1 === 0){
+    tcv = 0;
+  }else{
+    tcv = parseFloat((nClientes1 / nProspect1) * 100)
+  }
+
+  document.getElementById('tcv-1').value = tcv.toFixed(2) + '%';
+}
+function calcularTaxaDeConversaoDeVendas2(){
+  nClientes2 = numeroDeCliente_2.value || 0;
+  nProspect2 = numeroDeProspect_2.value || 0;
+
+  if(nClientes2 === 0 || nProspect2 === 0){
+    tcv = 0;
+  }else{
+    tcv = parseFloat((nClientes2 / nProspect2) * 100)
+  }
+
+  document.getElementById('tcv-2').value = tcv.toFixed(2) + '%';
+}
+function calcularTaxaDeConversaoDeVendas3(){
+  nClientes3 = numeroDeCliente_3.value || 0;
+  nProspect3 = numeroDeProspect_3.value || 0;
+
+  if(nClientes3 === 0 || nProspect3 === 0){
+    tcv = 0;
+  }else{
+    tcv = parseFloat((nClientes3 / nProspect3) * 100)
+  }
+
+  document.getElementById('tcv-3').value = tcv.toFixed(2) + '%';
+}
+
+//MONTANDO AS FUNÇÕES QUE SERÃO EXECUTADAS POR COLUNA
 function atualizarValores1(){
   calcularCustoPorLead1();
   calcularCustoPorProspect1();
   calcularTaxaDeConversãoProspect1();
+  calcularTaxaDeAquisicaoDeClientes1();
+  calcularTaxaDeConversaoDeVendas1();
 }
 function atualizarValores2(){
   calcularCustoPorLead2();
   calcularCustoPorProspect2();
   calcularTaxaDeConversãoProspect2();
+  calcularTaxaDeAquisicaoDeClientes2();
+  calcularTaxaDeConversaoDeVendas2();
 }
 function atualizarValores3(){
   calcularCustoPorLead3();
   calcularCustoPorProspect3();
   calcularTaxaDeConversãoProspect3();
+  calcularTaxaDeAquisicaoDeClientes3();
+  calcularTaxaDeConversaoDeVendas3();
 }
 
-//EXECUTANDO A FUNÇÃO CUSTO POR LEAD
+//EXECUTANDO A FUNÇÃO AO SAIR DO INPUT
 valorIvestido_1.onblur = function(){atualizarValores1()}
 numeroDeLeads_1.onblur = function(){atualizarValores1()}
 numeroDeProspect_1.onblur = function(){atualizarValores1()}
+numeroDeCliente_1.onblur = function(){atualizarValores1()}
 
 valorIvestido_2.onblur = function(){atualizarValores2()}
 numeroDeLeads_2.onblur = function(){atualizarValores2()}
 numeroDeProspect_2.onblur = function(){atualizarValores2()}
+numeroDeCliente_2.onblur = function(){atualizarValores2()}
 
 valorIvestido_3.onblur = function(){atualizarValores3()}
 numeroDeLeads_3.onblur = function(){atualizarValores3()}
 numeroDeProspect_3.onblur = function(){atualizarValores3()}
-
-//EXECUTANDO A FUNÇÃO CUSTO POR PROSPECT
+numeroDeCliente_3.onblur = function(){atualizarValores3()}
