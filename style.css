@@ -7,3 +7,16 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+input{
+  width: 100%;
+}
+
+.table{}
+
+.table-row-calc{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 4px;
+  margin-bottom: 4px;
+}
