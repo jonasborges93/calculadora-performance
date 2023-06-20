@@ -1,7 +1,7 @@
 //RECUPERANDO VALORES DOS INPUTs
-let valorIvestido_1 = document.getElementById('valor-investido-1');
-let valorIvestido_2 = document.getElementById('valor-investido-2');
-let valorIvestido_3 = document.getElementById('valor-investido-3');
+let valorInvestido_1 = document.getElementById('valor-investido-1');
+let valorInvestido_2 = document.getElementById('valor-investido-2');
+let valorInvestido_3 = document.getElementById('valor-investido-3');
 
 let numeroDeLeads_1 = document.getElementById('numero-leads-1');
 let numeroDeLeads_2 = document.getElementById('numero-leads-2');
@@ -15,9 +15,28 @@ let numeroDeCliente_1 = document.getElementById('numero-clientes-1');
 let numeroDeCliente_2 = document.getElementById('numero-clientes-2');
 let numeroDeCliente_3 = document.getElementById('numero-clientes-3');
 
+let valorDasVendas_1 = document.getElementById('valor-vendas-1');
+let valorDasVendas_2 = document.getElementById('valor-vendas-2');
+let valorDasVendas_3 = document.getElementById('valor-vendas-3');
+
+
+//CALCULANDO TOTAL INVESTIDO EM MIDIA
+function calcularTotalInvestidoEmMidia(){
+  let totalInvestido = 0;
+  let valor1 = parseFloat(valorInvestido_1.value || 0);
+  let valor2 = parseFloat(valorInvestido_2.value || 0);
+  let valor3 = parseFloat(valorInvestido_3.value || 0);
+
+  totalInvestido = totalInvestido += valor1;
+  totalInvestido = totalInvestido += valor2;
+  totalInvestido = totalInvestido += valor3;
+  
+  document.getElementById('total-investimento').innerHTML = totalInvestido.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
+}
+
 //CALCULANDO CUSTO POR LEAD
 function calcularCustoPorLead1(){
-  let valor1 = valorIvestido_1.value || 0;
+  let valor1 = valorInvestido_1.value || 0;
   let nLeads1 = numeroDeLeads_1.value || 0;
 
   if(nLeads1 === 0){
@@ -30,7 +49,7 @@ function calcularCustoPorLead1(){
 }
 
 function calcularCustoPorLead2(){
-  let valor2 = valorIvestido_2.value || 0;
+  let valor2 = valorInvestido_2.value || 0;
   let nLeads2 = numeroDeLeads_2.value || 0;
 
   if(nLeads2 === 0){
@@ -43,7 +62,7 @@ function calcularCustoPorLead2(){
 }
 
 function calcularCustoPorLead3(){
-  let valor3 = valorIvestido_3.value || 0;
+  let valor3 = valorInvestido_3.value || 0;
   let nLeads3 = numeroDeLeads_3.value || 0;
 
   if(nLeads3 === 0){
@@ -57,7 +76,7 @@ function calcularCustoPorLead3(){
 
 //CALCULANDO CUSTO POR PROSPECT
 function calcularCustoPorProspect1(){
-  let valor1 = valorIvestido_1.value || 0;
+  let valor1 = valorInvestido_1.value || 0;
   let nProspect1 = numeroDeProspect_1.value || 0;
 
   if(nProspect1 === 0){
@@ -70,7 +89,7 @@ function calcularCustoPorProspect1(){
 }
 
 function calcularCustoPorProspect2(){
-  let valor2 = valorIvestido_2.value || 0;
+  let valor2 = valorInvestido_2.value || 0;
   let nProspect2 = numeroDeProspect_2.value || 0;
 
   if(nProspect2 === 0){
@@ -84,7 +103,7 @@ function calcularCustoPorProspect2(){
 }
 
 function calcularCustoPorProspect3(){
-  let valor3 = valorIvestido_3.value || 0;
+  let valor3 = valorInvestido_3.value || 0;
   let nProspect3 = numeroDeProspect_3.value || 0;
 
   if(nProspect3 === 0){
@@ -140,7 +159,7 @@ function calcularTaxaDeConversãoProspect3(){
 //CALCULANDO TAXA DE AQUISIÇÃO DE CLIENTES(CAC)
 function calcularTaxaDeAquisicaoDeClientes1(){
   nClientes1 = numeroDeCliente_1.value || 0;
-  valor1 = valorIvestido_1.value || 0;
+  valor1 = valorInvestido_1.value || 0;
 
   if(nClientes1 === 0 || valor1 === 0){
     cac = 0;
@@ -153,7 +172,7 @@ function calcularTaxaDeAquisicaoDeClientes1(){
 
 function calcularTaxaDeAquisicaoDeClientes2(){
   nClientes2 = numeroDeCliente_2.value || 0;
-  valor2 = valorIvestido_2.value || 0;
+  valor2 = valorInvestido_2.value || 0;
 
   if(nClientes2 === 0 || valor2 === 0){
     cac = 0;
@@ -166,7 +185,7 @@ function calcularTaxaDeAquisicaoDeClientes2(){
 
 function calcularTaxaDeAquisicaoDeClientes3(){
   nClientes3 = numeroDeCliente_3.value || 0;
-  valor3 = valorIvestido_3.value || 0;
+  valor3 = valorInvestido_3.value || 0;
 
   if(nClientes3 === 0 || valor3 === 0){
     cac = 0;
@@ -190,6 +209,7 @@ function calcularTaxaDeConversaoDeVendas1(){
 
   document.getElementById('tcv-1').value = tcv.toFixed(2) + '%';
 }
+
 function calcularTaxaDeConversaoDeVendas2(){
   nClientes2 = numeroDeCliente_2.value || 0;
   nProspect2 = numeroDeProspect_2.value || 0;
@@ -202,6 +222,7 @@ function calcularTaxaDeConversaoDeVendas2(){
 
   document.getElementById('tcv-2').value = tcv.toFixed(2) + '%';
 }
+
 function calcularTaxaDeConversaoDeVendas3(){
   nClientes3 = numeroDeCliente_3.value || 0;
   nProspect3 = numeroDeProspect_3.value || 0;
@@ -215,6 +236,86 @@ function calcularTaxaDeConversaoDeVendas3(){
   document.getElementById('tcv-3').value = tcv.toFixed(2) + '%';
 }
 
+//CALCULANDO TICKET MEDIO DE VENDAS (TKM)
+function calcularTicketMedioDeVendas1(){
+  nVendas1 = valorDasVendas_1.value || 0;
+  nClientes1 = numeroDeCliente_1.value || 0;
+
+  if(nVendas1 === 0 || nClientes1 === 0){
+    tkm = 0;
+  }else{
+    tkm = parseFloat(nVendas1 / nClientes1);
+  }
+
+  document.getElementById('tkm-1').value = tkm.toFixed(2);
+}
+
+function calcularTicketMedioDeVendas2(){
+  nVendas2 = valorDasVendas_2.value || 0;
+  nClientes2 = numeroDeCliente_2.value || 0;
+
+  if(nVendas2 === 0 || nClientes2 === 0){
+    tkm = 0;
+  }else{
+    tkm = parseFloat(nVendas2 / nClientes2);
+  }
+
+  document.getElementById('tkm-2').value = tkm.toFixed(2);
+}
+
+function calcularTicketMedioDeVendas3(){
+  nVendas3 = valorDasVendas_3.value || 0;
+  nClientes3 = numeroDeCliente_3.value || 0;
+
+  if(nVendas3 === 0 || nClientes3 === 0){
+    tkm = 0;
+  }else{
+    tkm = parseFloat(nVendas3 / nClientes3);
+  }
+
+  document.getElementById('tkm-3').value = tkm.toFixed(2);
+}
+
+//CALCULANDO INDICE DE CONVERSÃO DE CAMPANHA (ICC)
+function calcularIndiceDeConversaoDeCampanha1(){
+  nVendas1 = valorDasVendas_1.value || 0;
+  nValorInvestido1 = valorInvestido_1.value || 0;
+
+  if(nVendas1 === 0 || nValorInvestido1 === 0){
+    icc = 0;
+  }else{
+    icc = parseFloat(nVendas1 / nValorInvestido1);
+  }
+
+  document.getElementById('icc-1').value = icc.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
+}
+
+function calcularIndiceDeConversaoDeCampanha2(){
+  nVendas2 = valorDasVendas_2.value || 0;
+  nValorInvestido2 = valorInvestido_2.value || 0;
+
+  if(nVendas2 === 0 || nValorInvestido2 === 0){
+    icc = 0;
+  }else{
+    icc = parseFloat(nVendas2 / nValorInvestido2);
+  }
+
+  document.getElementById('icc-2').value = icc.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
+}
+
+function calcularIndiceDeConversaoDeCampanha3(){
+  nVendas3 = valorDasVendas_3.value || 0;
+  nValorInvestido3 = valorInvestido_3.value || 0;
+
+  if(nVendas3 === 0 || nValorInvestido3 === 0){
+    icc = 0;
+  }else{
+    icc = parseFloat(nVendas3 / nValorInvestido3);
+  }
+
+  document.getElementById('icc-3').value = icc.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
+}
+
 //MONTANDO AS FUNÇÕES QUE SERÃO EXECUTADAS POR COLUNA
 function atualizarValores1(){
   calcularCustoPorLead1();
@@ -222,34 +323,48 @@ function atualizarValores1(){
   calcularTaxaDeConversãoProspect1();
   calcularTaxaDeAquisicaoDeClientes1();
   calcularTaxaDeConversaoDeVendas1();
+  calcularTicketMedioDeVendas1();
+  calcularIndiceDeConversaoDeCampanha1();
+  calcularTotalInvestidoEmMidia();
 }
+
 function atualizarValores2(){
   calcularCustoPorLead2();
   calcularCustoPorProspect2();
   calcularTaxaDeConversãoProspect2();
   calcularTaxaDeAquisicaoDeClientes2();
   calcularTaxaDeConversaoDeVendas2();
+  calcularTicketMedioDeVendas2();
+  calcularIndiceDeConversaoDeCampanha2();
+  calcularTotalInvestidoEmMidia();
 }
+
 function atualizarValores3(){
   calcularCustoPorLead3();
   calcularCustoPorProspect3();
   calcularTaxaDeConversãoProspect3();
   calcularTaxaDeAquisicaoDeClientes3();
   calcularTaxaDeConversaoDeVendas3();
+  calcularTicketMedioDeVendas3();
+  calcularIndiceDeConversaoDeCampanha3();
+  calcularTotalInvestidoEmMidia();
 }
 
 //EXECUTANDO A FUNÇÃO AO SAIR DO INPUT
-valorIvestido_1.onblur = function(){atualizarValores1()}
+valorInvestido_1.onblur = function(){atualizarValores1()}
 numeroDeLeads_1.onblur = function(){atualizarValores1()}
 numeroDeProspect_1.onblur = function(){atualizarValores1()}
 numeroDeCliente_1.onblur = function(){atualizarValores1()}
+valorDasVendas_1.onblur = function(){atualizarValores1()}
 
-valorIvestido_2.onblur = function(){atualizarValores2()}
+valorInvestido_2.onblur = function(){atualizarValores2()}
 numeroDeLeads_2.onblur = function(){atualizarValores2()}
 numeroDeProspect_2.onblur = function(){atualizarValores2()}
 numeroDeCliente_2.onblur = function(){atualizarValores2()}
+valorDasVendas_2.onblur = function(){atualizarValores2()}
 
-valorIvestido_3.onblur = function(){atualizarValores3()}
+valorInvestido_3.onblur = function(){atualizarValores3()}
 numeroDeLeads_3.onblur = function(){atualizarValores3()}
 numeroDeProspect_3.onblur = function(){atualizarValores3()}
 numeroDeCliente_3.onblur = function(){atualizarValores3()}
+valorDasVendas_3.onblur = function(){atualizarValores3()}
