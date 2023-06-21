@@ -39,6 +39,10 @@ function calcularCustoPorLead1(){
   let valor1 = valorInvestido_1.value || 0;
   let nLeads1 = numeroDeLeads_1.value || 0;
 
+  if(valor1 != 0){
+    valor1 = valor1.replace(',','.');
+  }
+
   if(nLeads1 === 0){
     cpl = parseFloat(valor1 / 1);
   }else{
@@ -51,7 +55,11 @@ function calcularCustoPorLead1(){
 function calcularCustoPorLead2(){
   let valor2 = valorInvestido_2.value || 0;
   let nLeads2 = numeroDeLeads_2.value || 0;
-
+  
+  if(valor2 != 0){
+    valor2 = valor2.replace(',','.');
+  }
+  
   if(nLeads2 === 0){
     cpl = parseFloat(valor2 / 1);
   }else{
@@ -64,6 +72,10 @@ function calcularCustoPorLead2(){
 function calcularCustoPorLead3(){
   let valor3 = valorInvestido_3.value || 0;
   let nLeads3 = numeroDeLeads_3.value || 0;
+  
+  if(valor3 != 0){
+    valor3 = valor3.replace(',','.');
+  }
 
   if(nLeads3 === 0){
     cpl = parseFloat(valor3 / 2);
@@ -78,7 +90,11 @@ function calcularCustoPorLead3(){
 function calcularCustoPorProspect1(){
   let valor1 = valorInvestido_1.value || 0;
   let nProspect1 = numeroDeProspect_1.value || 0;
-
+  
+  if(valor1 != 0){
+    valor1 = valor1.replace(',','.');
+  }
+  
   if(nProspect1 === 0){
     cpl = parseFloat(valor1 / 1);
   }else{
@@ -91,6 +107,10 @@ function calcularCustoPorProspect1(){
 function calcularCustoPorProspect2(){
   let valor2 = valorInvestido_2.value || 0;
   let nProspect2 = numeroDeProspect_2.value || 0;
+  
+  if(valor2 != 0){
+    valor2 = valor2.replace(',','.');
+  }
 
   if(nProspect2 === 0){
     cpl = parseFloat(valor2 / 1);
@@ -105,7 +125,11 @@ function calcularCustoPorProspect2(){
 function calcularCustoPorProspect3(){
   let valor3 = valorInvestido_3.value || 0;
   let nProspect3 = numeroDeProspect_3.value || 0;
-
+  
+  if(valor3 != 0){
+    valor3 = valor3.replace(',','.');
+  }
+  
   if(nProspect3 === 0){
     cpl = parseFloat(valor3 / 1);
   }else{
@@ -164,6 +188,7 @@ function calcularTaxaDeAquisicaoDeClientes1(){
   if(nClientes1 === 0 || valor1 === 0){
     cac = 0;
   } else{
+    valor1 = valor1.replace(',', '.');
     cac = parseFloat(valor1 / nClientes1);
   }
 
@@ -173,10 +198,11 @@ function calcularTaxaDeAquisicaoDeClientes1(){
 function calcularTaxaDeAquisicaoDeClientes2(){
   nClientes2 = numeroDeCliente_2.value || 0;
   valor2 = valorInvestido_2.value || 0;
-
+  
   if(nClientes2 === 0 || valor2 === 0){
     cac = 0;
   } else{
+    valor2 = valor2.replace(',', '.');
     cac = parseFloat(valor2 / nClientes2);
   }
 
@@ -190,6 +216,7 @@ function calcularTaxaDeAquisicaoDeClientes3(){
   if(nClientes3 === 0 || valor3 === 0){
     cac = 0;
   } else{
+    valor3 = valor3.replace(',', '.');
     cac = parseFloat(valor3 / nClientes3);
   }
 
@@ -240,14 +267,15 @@ function calcularTaxaDeConversaoDeVendas3(){
 function calcularTicketMedioDeVendas1(){
   nVendas1 = valorDasVendas_1.value || 0;
   nClientes1 = numeroDeCliente_1.value || 0;
-
+  
   if(nVendas1 === 0 || nClientes1 === 0){
     tkm = 0;
   }else{
+    nVendas1 = nVendas1.replace(',', '.');
     tkm = parseFloat(nVendas1 / nClientes1);
   }
 
-  document.getElementById('tkm-1').value = tkm.toFixed(2);
+  document.getElementById('tkm-1').value = tkm.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});;
 }
 
 function calcularTicketMedioDeVendas2(){
@@ -257,10 +285,11 @@ function calcularTicketMedioDeVendas2(){
   if(nVendas2 === 0 || nClientes2 === 0){
     tkm = 0;
   }else{
+    nVendas2 = nVendas2.replace(',', '.');
     tkm = parseFloat(nVendas2 / nClientes2);
   }
 
-  document.getElementById('tkm-2').value = tkm.toFixed(2);
+  document.getElementById('tkm-2').value = tkm.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});;
 }
 
 function calcularTicketMedioDeVendas3(){
@@ -270,10 +299,11 @@ function calcularTicketMedioDeVendas3(){
   if(nVendas3 === 0 || nClientes3 === 0){
     tkm = 0;
   }else{
+    nVendas3 = nVendas3.replace(',', '.');
     tkm = parseFloat(nVendas3 / nClientes3);
   }
 
-  document.getElementById('tkm-3').value = tkm.toFixed(2);
+  document.getElementById('tkm-3').value = tkm.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});;
 }
 
 //CALCULANDO INDICE DE CONVERSÃO DE CAMPANHA (ICC)
@@ -284,6 +314,8 @@ function calcularIndiceDeConversaoDeCampanha1(){
   if(nVendas1 === 0 || nValorInvestido1 === 0){
     icc = 0;
   }else{
+    nVendas1 = nVendas1.replace(',', '.');
+    nValorInvestido1 = nValorInvestido1.replace(',', '.');
     icc = parseFloat(nVendas1 / nValorInvestido1);
   }
 
@@ -297,6 +329,8 @@ function calcularIndiceDeConversaoDeCampanha2(){
   if(nVendas2 === 0 || nValorInvestido2 === 0){
     icc = 0;
   }else{
+    nVendas2 = nVendas2.replace(',', '.');
+    nValorInvestido2 = nValorInvestido2.replace(',', '.');
     icc = parseFloat(nVendas2 / nValorInvestido2);
   }
 
@@ -310,6 +344,8 @@ function calcularIndiceDeConversaoDeCampanha3(){
   if(nVendas3 === 0 || nValorInvestido3 === 0){
     icc = 0;
   }else{
+    nVendas3 = nVendas3.replace(',', '.');
+    nValorInvestido3 = nValorInvestido3.replace(',', '.');
     icc = parseFloat(nVendas3 / nValorInvestido3);
   }
 
