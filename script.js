@@ -78,7 +78,7 @@ function calcularCustoPorLead3(){
   }
 
   if(nLeads3 === 0){
-    cpl = parseFloat(valor3 / 2);
+    cpl = parseFloat(valor3 / 1);
   }else{
     cpl = parseFloat(valor3 / nLeads3);
   }
